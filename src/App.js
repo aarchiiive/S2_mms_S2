@@ -5,7 +5,7 @@ import UserList from "./features/users/UserList";
 
 function App() {
   return (
-    <div className="h-100% ml-8 mr-8 mt-8 md-8 bg-yellow-100 px-5 pt-10 ">
+    <div className=" bg-yellow-100 px-5 pt-10 ">
       <h1 className="text-center font-bold text-2xl text-gray-700">명함을 낳아줘</h1>
       <Routes>
         <Route path="/" element={<UserList />} />
