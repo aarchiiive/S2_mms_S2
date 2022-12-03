@@ -35,7 +35,7 @@ const Order = () => {
 
   return (
     <div>
-      <div>
+      <div class="h-screen ">
         <div class="my-8 grid grid-rows-1 gap-5 flex justify-center">
           <div>상품명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{cardName}</div>
           <div>주문번호 &nbsp;&nbsp; {id}</div>

@@ -74,7 +74,7 @@ const CreditCard = () => {
 
   return (
     <div>
-      <div>
+      <div class="h-screen">
         <div class="my-8 grid grid-rows-1 gap-5 flex justify-center">
           <div>카드사 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <select name="payment"

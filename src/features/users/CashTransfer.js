@@ -44,7 +44,8 @@ const CashTransfer = () => {
     if (verifyPaymentInfo())
     {
       console.log("Payment verified!");
-      navigate("/generate-qr"); 
+      alert("명함이 생성되었습니다!");
+      navigate("/"); 
       // 어디론가 가기...
       // navigate("/checkout"); 
     } else {
@@ -55,7 +56,7 @@ const CashTransfer = () => {
 
   return (
     <div>
-      <div>
+      <div class="h-screen">
         <div class="my-8 grid grid-rows-1 gap-5 flex justify-center">
           <div>은행명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <select name="payment"
