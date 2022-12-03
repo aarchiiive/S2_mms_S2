@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import Button from "../../components/Button";
 import TextField from "../../components/TextField";
 import { addUser } from "./userSlice";
 
 const AddUser = () => {
+  let id = uuidv4();
   const date = new Date();
   const addDate =
     date.getFullYear() +
@@ -45,9 +47,10 @@ const AddUser = () => {
       time: addDate,
       memo: "",
     });
+
     dispatch(
       addUser({
-        id: uuidv4(),
+        id: id,
         image: values.image,
         name: values.name,
         phone: values.phone,
@@ -125,7 +128,10 @@ const AddUser = () => {
       />
       <div className = "justify-between flex">
       <Button onClick={() => navigate("/")}>이전</Button>
-      <Button onClick={handleAddUser}>다음</Button>
+      <Link to={`/view-templates/${id}`} key={id}>
+        <Button onClick={handleAddUser}>다음</Button>
+      </Link>
+      
       {/* <Button onClick={() => navigate("/view-templates")}>다음</Button> */}
       </div>
     </div>

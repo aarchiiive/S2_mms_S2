@@ -19,12 +19,12 @@ function App() {
         <Route path="/" element={<UserList />} />
         <Route path="/add-user" element={<AddUser />} />
         <Route path="/edit-user/:id" element={<EditUser />} />
-        <Route path="/view-templates" element={<ViewTemplates />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/checkout-credit-card" element={<CreditCard />} />
-        <Route path="/checkout-cash-transfer" element={<CashTransfer />} />
-        <Route path="/bussiness-card" element={<BussinessCard />} />
-        <Route path="/generate-qr" element={<GenerateQR />} />
+        <Route path="/view-templates/:id" element={<ViewTemplates />} />
+        <Route path="/order/:id" element={<Order />} />
+        <Route path="/checkout-credit-card/:id" element={<CreditCard />} />
+        <Route path="/checkout-cash-transfer/:id" element={<CashTransfer />} />
+        <Route path="/bussiness-card/:id" element={<BussinessCard />} />
+        <Route path="/generate-qr/:id" element={<GenerateQR />} />
       </Routes>
     </div>
   );

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import { deleteUser } from "./userSlice";
+import t1 from "../../templates/template1.jpg";
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -10,10 +11,31 @@ const UserList = () => {
     dispatch(deleteUser({ id }));
   };
 
+  const color = (t) => {
+    console.log("template name :", t);
+    if (t === "t1") {
+      return "w-full h-48 bg-red-200 p-5 flex items-center justify-between"
+    } else if (t === "t2") {
+      return "w-full h-48 bg-blue-200 p-5 flex items-center justify-between"
+    } else if (t === "t3") {
+      return "w-full h-48 bg-amber-200 p-5 flex items-center justify-between"
+    } else if (t === "t4") {
+      return "w-full h-48 bg-green-200 p-5 flex items-center justify-between"
+    }
+  }
+
   const renderCard = () =>
     users.map((user) => (
+      // <div
+      //   // className={"w-auto h-48 bg-" + user.templateName + " bg-fixed md:bg-contain p-5 flex items-center justify-between"}
+      //   className={"w-auto h-48 bg-t4 bg-contain bg-center p-5 flex items-center justify-between"}
+      //   // class={getTemplate(user)}
+      //   // style={"background-image: URL(" + user.template + ")"}
+      //   key={user.id}
+      // >
+      
       <div
-        className="w-full h-48 bg-gray-200 p-5 flex items-center justify-between"
+        className={color(user.templateName)}
         key={user.id}
       >
         <div>
@@ -64,6 +86,8 @@ const UserList = () => {
           </button>
         </div>
       </div>
+
+      // <Box user={user}></Box>
     ));
 
   return (

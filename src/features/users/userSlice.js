@@ -41,12 +41,25 @@ const userSlice = createSlice({
         return state.filter(user => user.id !== id);
       }
     },
-    setPayment: (state, action) => {
-      const { payment } = action.payload;
-      
+    addTemplate: (state, action) => {
+      const { id, template, templateName } = action.payload;
+      const existingUser = state.find(user => user.id === id);
+      console.log(existingUser);
+      if (existingUser) {
+        existingUser.template = template;
+        existingUser.templateName = templateName;
+      }
+    },
+    addPayment: (state, action) => {
+      const { id, payment } = action.payload;
+      const existingUser = state.find(user => user.id === id);
+      console.log(existingUser);
+      if (existingUser) {
+        existingUser.payment = payment;
+      }
     }
   }
 });
 
-export const { addUser, editUser, deleteUser, setPayment } = userSlice.actions;
+export const { addUser, editUser, deleteUser, addTemplate, addPayment } = userSlice.actions;
 export default userSlice.reducer;
