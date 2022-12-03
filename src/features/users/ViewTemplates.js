@@ -54,7 +54,7 @@ const ViewTemplates = () => {
               setTemplate(img);
               setTemplateName(imgName);
             }}
-            class="flex scale-75 w-90 h-50 object-center "
+            class="flex scale-75 w-90 h-50 object-center hover:bg-gray-200"
             alt="card template"/>
           </div>
         )

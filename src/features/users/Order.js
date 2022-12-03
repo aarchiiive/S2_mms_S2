@@ -48,13 +48,13 @@ const Order = () => {
     if (payment === "CreditCard") {
       setPayment("CreditCard");
       dispatch(addPayment({ id : params.id , payment : "CreditCard"}));
-      console.log(existingUser[0].date);
+      console.log(existingUser[0].payment);
       navigate("/checkout-credit-card/" + params.id);
     }
     else {
-      setPayment("CreditCard");
+      setPayment("CashTransfer");
       dispatch(addPayment({ id : params.id , payment : "CashTransfer"}));
-      console.log(existingUser[0].date);
+      console.log(existingUser[0].payment);
       navigate("/checkout-cash-transfer/" + params.id);
     }
   };
@@ -79,9 +79,9 @@ const Order = () => {
             <select name="payment" 
             defaultValue="CreditCard" 
             onChange={e =>{
+              e.preventDefault();
               console.log("payment changed :", e.target.value);
               setPayment(e.target.value)
-              test()
             }}>
               <option value="CreditCard">신용/체크카드</option>
               <option value="CashTransfer">계좌이체</option>
