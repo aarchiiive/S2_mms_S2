@@ -40,9 +40,13 @@ const userSlice = createSlice({
       if(existingUser) {
         return state.filter(user => user.id !== id);
       }
+    },
+    setPayment: (state, action) => {
+      const { payment } = action.payload;
+      
     }
   }
 });
 
-export const { addUser, editUser, deleteUser } = userSlice.actions;
+export const { addUser, editUser, deleteUser, setPayment } = userSlice.actions;
 export default userSlice.reducer;

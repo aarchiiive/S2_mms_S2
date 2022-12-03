@@ -59,14 +59,15 @@ const AddUser = () => {
         memo: values.memo,
       })
     );
-    navigate("/");
+    navigate("/view-templates");
   };
 
   return (
     <div className="mt-10 max-w-xl mx-auto">
+      <div className='y-2 mb-2 flex flex-col text-base font-bold text-gray-800'>사진
       <input
+        className="mb-2"
         type="file"
-        
         onChange={(e) =>
           setValues({
             ...values,
@@ -74,6 +75,8 @@ const AddUser = () => {
           })
         }
       ></input>
+      
+      </div>
       <TextField
         label="이름"
         value={values.name}
@@ -122,7 +125,8 @@ const AddUser = () => {
       />
       <div className = "justify-between flex">
       <Button onClick={() => navigate("/")}>이전</Button>
-      <Button onClick={handleAddUser}>명함 낳기</Button>
+      <Button onClick={handleAddUser}>다음</Button>
+      {/* <Button onClick={() => navigate("/view-templates")}>다음</Button> */}
       </div>
     </div>
   );
