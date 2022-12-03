@@ -67,13 +67,14 @@ const UserList = () => {
     ));
 
   return (
-    <div>
+    <div className="h-screen">
       <div className="text-center">
         <Link to="/add-user">
           <Button>명함 만들기</Button>
         </Link>
       </div>
-      <div className="h-screen grid gap-5 md:grid-cols-2">
+
+      <div className="m-auto w-1/2 grid gap-5 md:grid-cols-2">
         {users.length ? (
           renderCard()
         ) : (

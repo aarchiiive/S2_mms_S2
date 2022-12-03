@@ -63,7 +63,7 @@ const AddUser = () => {
   };
 
   return (
-    <div className="mt-10 max-w-xl mx-auto">
+    <div className="h-screen w-1/3 m-auto">
       <div className='y-2 mb-2 flex flex-col text-base font-bold text-gray-800'>사진
       <input
         className="mb-2"
@@ -125,7 +125,7 @@ const AddUser = () => {
       />
       <div className = "justify-between flex">
       <Button onClick={() => navigate("/")}>이전</Button>
-      <Button onClick={handleAddUser}>다음</Button>
+      <Button onClick={() => handleAddUser()}>다음</Button>
       {/* <Button onClick={() => navigate("/view-templates")}>다음</Button> */}
       </div>
     </div>

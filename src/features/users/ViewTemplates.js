@@ -19,7 +19,7 @@ const ViewTemplates = () => {
     "object-right-bottom"
   ]
   const handleAddUser = () => {
-    navigate("/order");
+    
   };
 
   function RenderTemplate() {
@@ -44,13 +44,13 @@ const ViewTemplates = () => {
   }
 
   return (
-    <div>
-      <div className="h-screen justify-center grid gap-10 md:grid-cols-2">
+    <div className="h-screen">
+      <div className="w-3/5 m-auto grid gap-10 md:grid-cols-2">
         <RenderTemplate></RenderTemplate>
       </div>
       <div className = "flex justify-around">
         <Button onClick={() => navigate("/add-user")}>이전</Button>
-        <Button onClick={handleAddUser}>다음</Button>
+        <Button onClick={() => navigate("/confirm")}>다음</Button>
       </div>
     </div>
   )

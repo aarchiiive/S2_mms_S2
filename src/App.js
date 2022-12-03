@@ -9,15 +9,16 @@ import CreditCard from './features/users/CreditCard';
 import CashTransfer from './features/users/CashTransfer';
 import GenerateQR from './features/users/GenerateQR';
 import BussinessCard from './features/users/BussinessCard';
-
+import Confirm from './features/users/Confirm';
 
 function App() {
   return (
     <div className=" bg-yellow-100 px-5 pt-10 ">
-      <h1 className="text-center font-bold text-2xl text-gray-700">명함을 낳아줘</h1>
+      <h1 className="mb-10 text-center font-bold text-4xl text-gray-700">명함을 낳아줘</h1>
       <Routes>
         <Route path="/" element={<UserList />} />
         <Route path="/add-user" element={<AddUser />} />
+        <Route path="/confirm" element={<Confirm />}/>
         <Route path="/edit-user/:id" element={<EditUser />} />
         <Route path="/view-templates" element={<ViewTemplates />} />
         <Route path="/order" element={<Order />} />
