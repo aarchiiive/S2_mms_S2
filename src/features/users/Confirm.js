@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import { deleteUser } from "./userSlice";
 import { useNavigate, useParams } from "react-router-dom";
+
 const Confirm = () => {
+  const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const users = useSelector((store) => store.users);
@@ -42,8 +44,8 @@ const Confirm = () => {
       </div>
 
       <div className="mt-10 w-1/3 m-auto justify-between flex">
-        <Button onClick={() => navigate("/view-templates")}>이전</Button>
-        <Button onClick={() => navigate("/order")}>결제</Button>
+        <Button onClick={() => navigate("/view-templates/" + params.id)}>이전</Button>
+        <Button onClick={() => navigate("/order/" + params.id)}>결제</Button>
       </div>
     </div>
   );
