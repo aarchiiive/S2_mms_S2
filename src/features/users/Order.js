@@ -68,9 +68,8 @@ const Order = () => {
   }
 
   return (
-    <div>
-      <div class="h-screen ">
-        <div class="my-8 grid grid-rows-1 gap-5 flex justify-center">
+    <div className="h-screen">
+        <div class="my-8 grid grid-rows-1 gap-5 justify-center">
           <div>상품명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{cardName}</div>
           <div>주문번호 &nbsp;&nbsp; {id}</div>
           <div>주문일시 &nbsp;&nbsp; {getDate()}</div>
@@ -89,13 +88,10 @@ const Order = () => {
           </p>
           <hr></hr>
           <div>총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}</div>
-        </div>
+        
       </div>
-      <div className = "flex justify-around">
-        {/* <Button onClick={() => navigate("/view-templates")}>이전</Button> */}
-        <Link to={`/view-templates/${params.id}`} key={params.id}>
-          <Button>이전</Button>
-        </Link>
+      <div className = "mt-10 w-1/3 m-auto justify-between flex">
+        <Button onClick={() => navigate("/view-templates" + params.id)}>이전</Button>
         {/* bg-yellow-200 font-bold py-2 px-6 my-10 shadow-md rounded-md hover:bg-yellow-300 */}
         {/* <button class="py-2 px-6 my-10 font-bold rounded-lg shadow-md bg-blue-200 hover:bg-blue-300"
         onClick={handleAddUser}>

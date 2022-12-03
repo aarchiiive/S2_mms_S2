@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<UserList />} />
         <Route path="/add-user" element={<AddUser />} />
+        <Route path="/confirm" element={<Confirm />}/>
         <Route path="/edit-user/:id" element={<EditUser />} />
         <Route path="/confirm/:id" element={<Confirm />}/>
         <Route path="/view-templates/:id" element={<ViewTemplates />} />

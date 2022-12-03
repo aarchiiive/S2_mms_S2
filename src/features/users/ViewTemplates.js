@@ -27,7 +27,7 @@ const ViewTemplates = () => {
     if (selected) {
       console.log(template);
       dispatch(addTemplate({id : params.id, template : template, templateName : templateName}));
-      navigate("/order/" + params.id);
+      navigate("/confirm/"+ params.id);
     }
     else
       alert("템플릿이 선택되지 않았습니다.");
@@ -63,14 +63,12 @@ const ViewTemplates = () => {
   }
 
   return (
-    <div>
-      <div className="h-screen justify-around grid md:grid-cols-2">
+    <div className="h-screen">
+      <div className="w-3/5 m-auto grid gap-10 md:grid-cols-2">
         <RenderTemplate></RenderTemplate>
       </div>
       <div className = "flex justify-around">
-        <Link to={`/add-user`}>
-          <Button>이전</Button>
-        </Link>
+        <Button onClick={() => navigate("/add-user")}>이전</Button>
         <Button onClick={handleViewTemplates}>다음</Button>
       </div>
     </div>

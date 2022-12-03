@@ -51,7 +51,8 @@ const EditUser = () => {
   };
 
   return (
-    <div className="mt-10 max-w-xl mx-auto">
+    <div className="h-screen">
+    <div className="mt-10 w-1/3 m-auto">
       <TextField
         label="이름"
         value={values.name}
@@ -104,6 +105,7 @@ const EditUser = () => {
       <Button onClick={() => navigate("/")}>이전</Button>
       <Button onClick={handleEditUser}>수정</Button>
       </div>
+    </div>
     </div>
   );
 };
