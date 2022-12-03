@@ -59,7 +59,7 @@ const AddUser = () => {
         memo: values.memo,
       })
     );
-    navigate("/");
+    navigate("/view-templates");
   };
 
   return (
@@ -126,6 +126,7 @@ const AddUser = () => {
       <div className = "justify-between flex">
       <Button onClick={() => navigate("/")}>이전</Button>
       <Button onClick={handleAddUser}>다음</Button>
+      {/* <Button onClick={() => navigate("/view-templates")}>다음</Button> */}
       </div>
     </div>
   );
