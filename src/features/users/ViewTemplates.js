@@ -39,7 +39,7 @@ const ViewTemplates = () => {
     return (
       images.map((img, i) => {
         return (
-          <div>
+          <div class="bg-white-500 opacity-100 scale-75 hover:opacity-70">
             <img 
             // class="group-hover:opacity-75"
             src={img} 
@@ -54,7 +54,7 @@ const ViewTemplates = () => {
               setTemplate(img);
               setTemplateName(imgName);
             }}
-            class="flex scale-75 w-90 h-50 object-center hover:bg-gray-200"
+            class="flex scale-100 w-90 h-50 object-center"
             alt="card template"/>
           </div>
         )

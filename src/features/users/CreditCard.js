@@ -73,56 +73,80 @@ const CreditCard = () => {
   };
 
   return (
-    <div>
-      <div class="h-screen">
+    <div class="h-screen">
+      <div>
         <div class="my-8 grid grid-rows-1 gap-5 flex justify-center">
           <div>카드사 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <select name="payment"
-            class="py-1 mb-4 px-16 border-1.5 outline-none">
+            <select 
+            name="payment"
+            class="py-1 mb-4 px-16 border-1.5 outline-none"
+            >
               {getPayment()}
             </select>
           </div>
           <div>
-            카드번호 &nbsp;&nbsp; 
-            <input class="py-1 mb-2 px-12 border-1.5 outline-none"
-            onChange={e => {
-              e.preventDefault();
-              console.log(e.target.value);
-              if (e.target.value === examplePaymentInfo.creditCard.number) {
-                setPaymentInfo({...paymentInfo, number : e.target.value});
-                console.log("Card number verified!");
-              }
-            }}></input>
-          </div>
-          <div>
-            유효기간 &nbsp;&nbsp; 
-            <input class="py-1 mb-2 px-12 border-1.5 outline-none"
-            onChange={e => {
-              e.preventDefault();
-              console.log(e.target.value);
-              if (e.target.value === examplePaymentInfo.creditCard.expireDate) {
-                setPaymentInfo({...paymentInfo, expireDate : e.target.value});
-                console.log("Expire date verified!");
-              }
-            }}></input>
-          </div>
-          <div>
-            CVC &nbsp;&nbsp; 
-            <input class="py-1 mb-2 px-12 border-1.5 outline-none"
-            onChange={e => {
-              e.preventDefault();
-              console.log(e.target.value);
-              if (e.target.value === examplePaymentInfo.creditCard.cvc) {
-                setPaymentInfo({...paymentInfo, cvc : e.target.value});
-                console.log("CVC verified!");
-              }
-            }}></input>
+            <div
+            class="grid grid-cols-2 flex gap-4 items-stretch"
+            >
+              <div>
+                카드번호 &nbsp;&nbsp;
+              </div>
+              <div
+              class="self-center"
+              >
+                <input
+                // class="py-1 mb-2 px-12 border-1.5 outline-none"
+                onChange={e => {
+                  e.preventDefault();
+                  console.log(e.target.value);
+                  if (e.target.value === examplePaymentInfo.creditCard.number) {
+                    setPaymentInfo({...paymentInfo, number : e.target.value});
+                    console.log("Card number verified!");
+                  }
+                }}></input>
+              </div>
+              <div>
+                유효기간 &nbsp;&nbsp;
+              </div>
+              <div> 
+                <input
+                // class="py-1 mb-2 px-12 border-1.5 outline-none"
+                onChange={e => {
+                  e.preventDefault();
+                  console.log(e.target.value);
+                  if (e.target.value === examplePaymentInfo.creditCard.expireDate) {
+                    setPaymentInfo({...paymentInfo, expireDate : e.target.value});
+                    console.log("Expire date verified!");
+                  }
+                }}></input>
+              </div>
+              <div>
+                CVC &nbsp;&nbsp;
+              </div>
+              <div>
+                <input
+                // class="py-1 mb-2 px-12 border-1.5 outline-none"
+                onChange={e => {
+                  e.preventDefault();
+                  console.log(e.target.value);
+                  if (e.target.value === examplePaymentInfo.creditCard.cvc) {
+                    setPaymentInfo({...paymentInfo, cvc : e.target.value});
+                    console.log("CVC verified!");
+                  }
+                }}></input>
+              </div>
+              
+            </div>
             </div>
           <hr></hr>
-          <div>총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}</div>
+          <p>
+            <div>
+              총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}
+            </div>
+          </p>
         </div>
       </div>
-      <div className = "flex justify-around">
+      <div className = "mt-10 w-1/3 m-auto justify-between flex">
         <Button onClick={() => navigate("/order/" + params.id)}>이전</Button>
         {/* bg-yellow-200 font-bold py-2 px-6 my-10 shadow-md rounded-md hover:bg-yellow-300 */}
         <button class="py-2 px-6 my-10 font-bold rounded-lg shadow-md bg-blue-200 hover:bg-blue-300"
