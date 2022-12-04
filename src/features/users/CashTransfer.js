@@ -71,7 +71,7 @@ const CashTransfer = () => {
         <div>총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}</div>
       </div>
       <div className="mt-10 w-1/3 m-auto justify-between flex">
-        <Button onClick={() => navigate("/order")}>이전</Button>
+        <Button onClick={() => navigate("/order/" + params.id)}>이전</Button>
         {/* bg-yellow-200 font-bold py-2 px-6 my-10 shadow-md rounded-md hover:bg-yellow-300 */}
         <button
           class="py-2 px-6 my-10 font-bold rounded-lg shadow-md bg-blue-200 hover:bg-blue-300"
