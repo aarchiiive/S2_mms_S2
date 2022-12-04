@@ -32,7 +32,6 @@ const saveimage = () => {
 	return (
 		<>
 			<Div id="div">
-				Hello #006888!
 				<div>
                     <h4>이름: {User.name}</h4>
                     <h4>전화번호: {User.phone}세</h4>
