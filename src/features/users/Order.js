@@ -39,7 +39,9 @@ const Order = () => {
 
 
   const cardName = "명함";
-  const id = "M0001";
+  const id = "MMS" ;
+  
+  // id = "MMS" + id.padStart(8, '0');
   // const date = "20221104";
   const amount = 1000;
   const [ payment, setPayment ] = useState("CreditCard");
