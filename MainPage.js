@@ -8,10 +8,10 @@ function User({ User }) {
         <>
         <div>
             <h4>이름: {User.name}</h4>
-            <h4>전화번호: {User.phone}세</h4>
+            <h4>전화번호: {User.phone}</h4>
             <h4>주소: {User.addr}</h4>
             <h4>SNS: {User.SNS}</h4>
-            <h4>직책: {User.position}세</h4>
+            <h4>직책: {User.position}</h4>
             <h4>이메일: {User.email}</h4>
             <h4>이름: {User.memo}</h4>
         </div>
