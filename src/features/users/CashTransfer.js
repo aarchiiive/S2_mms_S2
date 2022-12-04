@@ -28,6 +28,13 @@ const CashTransfer = () => {
     });
   };
 
+  const examplePaymentInfo = {
+    creditCard : {
+      bank : "신한카드",
+      customerName : "",
+    },
+  }
+
   const verifyPaymentInfo = () => {
     if (balance >= amount) return true;
     else return false;
