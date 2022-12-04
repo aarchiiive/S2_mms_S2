@@ -1,13 +1,22 @@
-$(document).ready(function(){
-    jsonTest();
-    })
-    
-    function jsonTest(){
-    document.links(user1.image);
-    document.links(user1.name);
-    document.links(user1.phone);
-    document.links(user1.addr);
-    document.links(user1.SNS);
-    document.links(user1.position);
-    document.links(user1.email);
-    }
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.js';
+import User from './UserList';
+
+function User({ User }) {
+    return (
+        <>
+        <div>
+            <h4>이름: {User.name}</h4>
+            <h4>전화번호: {User.phone}세</h4>
+            <h4>주소: {User.addr}</h4>
+            <h4>SNS: {User.SNS}</h4>
+            <h4>직책: {User.position}세</h4>
+            <h4>이메일: {User.email}</h4>
+            <h4>이름: {User.memo}</h4>
+        </div>
+        </>
+    );
+}
+
+export default Student;
