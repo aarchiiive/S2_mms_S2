@@ -29,7 +29,6 @@ const ViewTemplates = () => {
     "그린",
     "레드"
   ]
-
   const handleViewTemplates = () => {
     if (selected) {
       console.log(template);

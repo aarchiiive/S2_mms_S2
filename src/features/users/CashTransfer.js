@@ -44,7 +44,7 @@ const CashTransfer = () => {
     if (verifyPaymentInfo()) {
       console.log("Payment verified!");
       alert("명함이 생성되었습니다!");
-      navigate("/");
+      navigate("/userlist");
       // 어디론가 가기...
       // navigate("/checkout");
     } else {

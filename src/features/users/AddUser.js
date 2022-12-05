@@ -128,10 +128,10 @@ const AddUser = () => {
       />
       <div className = "justify-between flex">
       <Button onClick={() => navigate("/")}>이전</Button>
+
       <Link to={`/view-templates/${id}`} key={id}>
         <Button onClick={handleAddUser}>다음</Button>
       </Link>
-      
       {/* <Button onClick={() => navigate("/view-templates")}>다음</Button> */}
       </div>
     </div>
