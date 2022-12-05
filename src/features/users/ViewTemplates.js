@@ -23,7 +23,12 @@ const ViewTemplates = () => {
     "object-left-bottom",
     "object-right-bottom"
   ]
-
+  const colors = [
+    "옐로우",
+    "블루",
+    "그린",
+    "레드"
+  ]
   const handleViewTemplates = () => {
     if (selected) {
       console.log(template);
@@ -49,7 +54,7 @@ const ViewTemplates = () => {
               const k = i + 1;
               const imgName = "t" + k;
               console.log("template", i, "selected");
-              alert("템플릿 " + k + "가 선택되었습니다.");
+              alert(colors[i] + "가(이) 선택되었습니다.");
               setSelected(true);
               console.log(imgName);
               setTemplate(img);

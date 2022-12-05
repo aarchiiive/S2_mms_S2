@@ -19,8 +19,8 @@ function App() {
         명함을 낳아줘
       </h1>
       <Routes>
-        <Route path="/" element={<UserList />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/userlist" element={<UserList />} />
         <Route path="/register" element={<Register />} />
         <Route path="/add-user" element={<AddUser />} />
         <Route path="/confirm" element={<Confirm />} />

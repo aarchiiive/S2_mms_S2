@@ -14,11 +14,6 @@ function Login() {
     setPassword(event.currentTarget.value);
   };
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    navigate("/");
-  };
-
   return (
     <div className="h-screen w-1/3 m-auto text-center">
       <form>
@@ -39,9 +34,12 @@ function Login() {
             onChange={onPasswordHandler}
           />
         </div>
-        <div>
-          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={onSubmit}>
+        <div className="justify-between flex">
+          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={() => navigate("/userlist")}>
             로그인
+          </button>
+          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={() => navigate("/register")}>
+            회원가입
           </button>
         </div>
       </form>

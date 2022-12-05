@@ -73,9 +73,12 @@ function Register() {
             onChange={onConfirmPasswordHandler}
           />
         </div>
-        <div>
-          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={onSubmit}>
-            회원가입
+        <div className="justify-between flex">
+          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={() => navigate("/")}>
+            이전
+          </button>
+          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={() => navigate("/")}>
+            완료
           </button>
         </div>
       </form>

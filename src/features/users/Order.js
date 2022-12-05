@@ -39,7 +39,9 @@ const Order = () => {
 
 
   const cardName = "명함";
-  const id = "M0001";
+  const id = "MMS" ;
+
+  // id = "MMS" + id.padStart(8, '0');
   // const date = "20221104";
   const amount = 1000;
   const [ payment, setPayment ] = useState("CreditCard");
@@ -71,7 +73,7 @@ const Order = () => {
     <div className="h-screen">
         <div class="my-8 grid grid-rows-1 gap-5 justify-center">
           <div>상품명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{cardName}</div>
-          <div>주문번호 &nbsp;&nbsp; {id}</div>
+          <div>주문번호 &nbsp;&nbsp; {id + String(users.length).padStart(4, '0')}</div>
           <div>주문일시 &nbsp;&nbsp; {getDate()}</div>
           <p>
             <label>결제수단 &nbsp;&nbsp;&nbsp;</label>
@@ -91,7 +93,7 @@ const Order = () => {
         
       </div>
       <div className = "mt-10 w-1/3 m-auto justify-between flex">
-        <Button onClick={() => navigate("/view-templates" + params.id)}>이전</Button>
+        <Button onClick={() => navigate("/confirm/" + params.id)}>이전</Button>
         {/* bg-yellow-200 font-bold py-2 px-6 my-10 shadow-md rounded-md hover:bg-yellow-300 */}
         {/* <button class="py-2 px-6 my-10 font-bold rounded-lg shadow-md bg-blue-200 hover:bg-blue-300"
         onClick={handleAddUser}>
