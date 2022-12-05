@@ -7,14 +7,17 @@ import {QRCodeSVG} from 'qrcode.react';
 import { Container } from "postcss";
 
 const GenerateQR = () => {
+  const params = useParams();
   const url = "localhost:3000/bussiness-card";
 
   return (
-    <div class="mt-8 grid justify-items-stretch">
-      <div class="justify-self-center ...">
-        <QRCodeSVG value={url} />
+    <div class="h-screen">
+      <div class="mt-8 grid justify-items-stretch">
+        <div class="justify-self-center ...">
+          <QRCodeSVG value={url} />
+        </div>
+        <h1 class="mt-8 justify-self-center ...">명함이 생성되었습니다!</h1>
       </div>
-      <h1 class="mt-8 justify-self-center ...">명함이 생성되었습니다!</h1>
     </div>
   )
 }

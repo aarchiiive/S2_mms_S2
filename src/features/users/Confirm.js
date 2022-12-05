@@ -48,14 +48,7 @@ const Confirm = () => {
             className="absolute m-auto h-auto rounded-md flex w-full p-5"
             key={users[users.length - 1].id}
           >
-<<<<<<< HEAD
-            <div 
-            className="z-20 p-5" 
-            // data-html2canvas-ignore="true"
-            >
-=======
             <div className="z-10 p-5" >
->>>>>>> 68d92722ac571ae12c1d73bd6beca61aa96e86bc
               <img
                 className="h-24 w-auto rounded-md"
                 alt="업로드 이미지"
@@ -83,12 +76,12 @@ const Confirm = () => {
           이전
         </Button>
         <Button onClick={() => navigate("/order/" + params.id)}>결제</Button>
-        <button
+        {/* <button
           className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300"
           onClick={onCapture}
         >
           클릭
-        </button>
+        </button> */}
       </div>
     </div>
   );

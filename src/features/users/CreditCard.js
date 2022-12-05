@@ -3,28 +3,25 @@ import TextField from "../../components/TextField";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { addPurchased } from "./userSlice";
 
 const CreditCard = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const amount = 1000;
-  let paymentVerified = false;
   const [paymentInfo, setPaymentInfo] = useState({
     company: "신한카드",
     number: "",
     expireDate: "",
-    cvc: "",
+    cvc: ""
   });
 
   const examplePaymentInfo = {
-    creditCard: {
-      company: "신한카드",
-      number: "4113 8681 3646 9842",
-      expireDate: "0327",
-      cvc: "934",
-    },
-    cash: {},
+    company: "신한카드",
+    number: "4113 8681 3646 9842",
+    expireDate: "0327",
+    cvc: "934"
   };
 
   const getPayment = () => {
@@ -53,12 +50,23 @@ const CreditCard = () => {
     else return false;
   };
 
-  const handleCheckOut = () => {
+  const handleCheckOut = (e) => {
+    e.preventDefault();
+
+    const info = Object.values(paymentInfo);
+    for (let i = 0; i < info.length; i++) {
+      if (info[i].length === 0) { 
+        console.log("입력 되지 않음");
+        alert("입력되지 않은 결제 정보가 있습니다.");
+        return;
+      }
+    }
+
     if (verifyPaymentInfo()) {
       console.log("Payment verified!");
-      navigate("/generate-qr");
-      // 어디론가 가기...
-      // navigate("/checkout");
+      alert("명함이 생성되었습니다!");
+      dispatch(addPurchased({id : params.id, purchased : true}));
+      navigate("/userlist");
     } else {
       alert("유효하지 않은 결제 정보입니다.");
     }
@@ -68,25 +76,24 @@ const CreditCard = () => {
     <div class="h-screen">
       <div>
         <div class="my-8 grid grid-rows-1 gap-5 justify-center">
-          <div className="justify-between flex">
-            카드사
+          <p>
+            <label for="">카드사 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <select
-              className="ml-8 w-2/3 text-center"
+              className="relative h-6 w-44 text-center"
               name="payment"
-              class="py-1 mb-4 px-16 border-1.5 outline-none"
             >
               {getPayment()}
             </select>
-          </div>
+          </p>
 
           <div className="justify-between flex">
             카드번호
             <input
-              className="ml-5"
+              className="ml-5 text-center"
               onChange={(e) => {
-                e.preventDefault();
+                // e.preventDefault();
                 console.log(e.target.value);
-                if (e.target.value === examplePaymentInfo.creditCard.number) {
+                if (e.target.value === examplePaymentInfo.number) {
                   setPaymentInfo({ ...paymentInfo, number: e.target.value });
                   console.log("Card number verified!");
                 }
@@ -97,17 +104,12 @@ const CreditCard = () => {
           <div className ="justify-between flex">
             유효기간
             <input
-              className="ml-5"
+              className="ml-5 text-center"
               onChange={(e) => {
-                e.preventDefault();
+                // e.preventDefault();
                 console.log(e.target.value);
-                if (
-                  e.target.value === examplePaymentInfo.creditCard.expireDate
-                ) {
-                  setPaymentInfo({
-                    ...paymentInfo,
-                    expireDate: e.target.value,
-                  });
+                if (e.target.value === examplePaymentInfo.expireDate) {
+                  setPaymentInfo({...paymentInfo, expireDate: e.target.value});
                   console.log("Expire date verified!");
                 }
               }}
@@ -115,11 +117,11 @@ const CreditCard = () => {
           </div>
           <div className="justify-between flex">
             CVC
-            <input className="ml-5"
+            <input className="ml-5 text-center"
               onChange={(e) => {
-                e.preventDefault();
+                // e.preventDefault();
                 console.log(e.target.value);
-                if (e.target.value === examplePaymentInfo.creditCard.cvc) {
+                if (e.target.value === examplePaymentInfo.cvc) {
                   setPaymentInfo({ ...paymentInfo, cvc: e.target.value });
                   console.log("CVC verified!");
                 }
@@ -127,7 +129,7 @@ const CreditCard = () => {
             ></input>
           </div>
           <hr></hr>
-          <p className="font-bold text-center">
+          <p className="font-semibold text-center text-lg">
             총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}
           </p>
         </div>

@@ -6,12 +6,28 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const verifyEmail = () => {
+    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    return (email != '' && email != 'undefined' && regex.test(email));
+  };
+
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value);
   };
 
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value);
+  };
+
+  const handleAccountInfo = (e) => {
+    e.preventDefault();
+    if (verifyEmail())
+      if (password.length === 0)
+        alert("비밀번호가 입력되지 않았습니다.")
+      else
+        navigate("/userlist");
+    else
+      alert("유효하지 않은 이메일입니다.");
   };
 
   return (
@@ -35,7 +51,7 @@ function Login() {
           />
         </div>
         <div className="justify-between flex">
-          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={() => navigate("/userlist")}>
+          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={handleAccountInfo}>
             로그인
           </button>
           <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={() => navigate("/register")}>

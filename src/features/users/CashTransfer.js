@@ -3,6 +3,7 @@ import TextField from "../../components/TextField";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { addPurchased } from "./userSlice";
 
 const CashTransfer = () => {
   const params = useParams();
@@ -12,8 +13,7 @@ const CashTransfer = () => {
     bank: "",
     customerName: "",
   });
-  let amount = 1000;
-  let balance = 2000;
+  const amount = 1000;
 
   const getBankList = () => {
     const cardList = [
@@ -29,24 +29,28 @@ const CashTransfer = () => {
   };
 
   const examplePaymentInfo = {
-    creditCard : {
-      bank : "신한카드",
-      customerName : "",
-    },
+    // bank : "국민은행",
+    // customerName : "",
+    balance : 1000
   }
 
   const verifyPaymentInfo = () => {
-    if (balance >= amount) return true;
+    if (examplePaymentInfo.balance >= amount) return true;
     else return false;
   };
 
-  const handleCheckOut = () => {
+  const handleCheckOut = (e) => {
+    e.preventDefault();
+    if (paymentInfo.customerName.length === 0) {
+      alert("입금자 성함이 입력되지 않았습니다");
+      return;
+    }
+
     if (verifyPaymentInfo()) {
       console.log("Payment verified!");
       alert("명함이 생성되었습니다!");
+      dispatch(addPurchased({id : params.id, purchased : true}));
       navigate("/userlist");
-      // 어디론가 가기...
-      // navigate("/checkout");
     } else {
       alert("잔액이 부족합니다.");
     }
@@ -56,26 +60,27 @@ const CashTransfer = () => {
     <div className="h-screen">
       <div class="my-8 grid grid-rows-1 gap-5 justify-center">
         <div>
-          은행명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <label for="">은행명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
           <select
             name="payment"
-            class="py-1 mb-4 px-16 border-1.5 outline-none"
+            className="relative h-6 w-48 text-center"
           >
             {getBankList()}
           </select>
         </div>
-        <div>
-          입금주 성함 &nbsp;&nbsp;
+        <div className ="justify-between flex">
+          입금자 성함 &nbsp;
           <input
-            class="py-1 mb-2 px-12 border-1.5 outline-none"
+            className="w-48 text-center"
             onChange={(e) => {
               e.preventDefault();
               console.log(e.target.value);
+              setPaymentInfo({...paymentInfo, customerName : e.target.value});
             }}
           ></input>
         </div>
         <hr></hr>
-        <div>총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}</div>
+        <div className="font-semibold text-center text-lg">총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}</div>
       </div>
       <div className="mt-10 w-1/3 m-auto justify-between flex">
         <Button onClick={() => navigate("/order/" + params.id)}>이전</Button>

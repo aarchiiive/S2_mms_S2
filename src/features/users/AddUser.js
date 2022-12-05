@@ -9,6 +9,8 @@ import { addUser } from "./userSlice";
 
 const AddUser = () => {
   let id = uuidv4();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const date = new Date();
   const addDate =
     date.getFullYear() +
@@ -19,10 +21,8 @@ const AddUser = () => {
     "일 " +
     ("0" + date.getHours()).slice(-2) +
     ":" +
-    ("0" + date.getMinutes()).slice(-2) +
-    "에 생성됨";
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+    ("0" + date.getMinutes()).slice(-2);
+  
   const [values, setValues] = useState({
     image: "",
     name: "",
@@ -35,19 +35,18 @@ const AddUser = () => {
     memo: "",
   });
 
-  const handleAddUser = () => {
-    setValues({
-      image: "",
-      name: "",
-      phone: "",
-      addr: "",
-      SNS: "",
-      position: "",
-      email: "",
-      time: addDate,
-      memo: "",
-    });
+  const verifyPhoneNumber = () => {
+    var regex = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}/;
+    return (values.phone != '' && values.phone != 'undefined' && regex.test(values.phone));
+  };
 
+  const verifyEmail = () => {
+    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    return (values.email != '' && values.email != 'undefined' && regex.test(values.email));
+  };
+
+  const handleAddUser = (e) => {
+    e.preventDefault();
     dispatch(
       addUser({
         id: id,
@@ -60,9 +59,31 @@ const AddUser = () => {
         email: values.email,
         time: addDate,
         memo: values.memo,
+        purchased: false
       })
     );
-    navigate("/view-templates");
+
+    const info = Object.values(values);
+    for (let i = 0; i < info.length; i++) {
+      if (info[i].length === 0) { 
+        console.log("입력 되지 않음");
+        alert("입력되지 않은 정보가 있습니다.");
+        return;
+      }
+      // console.log(info[i])
+    }
+    
+    if (!verifyPhoneNumber()) {
+      alert("유효하지 않은 전화번호입니다.");
+      return;
+    }
+
+    if (!verifyEmail()) {
+      alert("유효하지 않은 이메일입니다.");
+      return;
+    }
+
+    navigate("/view-templates/" + id);
   };
 
   return (
@@ -127,11 +148,11 @@ const AddUser = () => {
         }}
       />
       <div className = "justify-between flex">
-      <Button onClick={() => navigate("/")}>이전</Button>
+      <Button onClick={() => navigate("/userlist")}>이전</Button>
 
-      <Link to={`/view-templates/${id}`} key={id}>
-        <Button onClick={handleAddUser}>다음</Button>
-      </Link>
+      {/* <Link to={`/view-templates/${id}`} key={id}> */}
+      <Button onClick={handleAddUser}>다음</Button>
+      {/* </Link> */}
       {/* <Button onClick={() => navigate("/view-templates")}>다음</Button> */}
       </div>
     </div>

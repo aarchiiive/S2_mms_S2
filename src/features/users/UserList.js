@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import { deleteUser } from "./userSlice";
 import t1 from "../../templates/template1.jpg";
 import html2canvas from "html2canvas";
+import { QRCodeSVG } from 'qrcode.react';
 
 const UserList = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const users = useSelector((store) => store.users);
   const handleRemoveUser = (id) => {
     dispatch(deleteUser({ id }));
@@ -30,37 +33,27 @@ const UserList = () => {
     document.body.removeChild(link);
   };
 
-  const color = (user) => {
-    let t = user.templateName;
-    console.log("template name :", t);
-    if (t === "t1") {
-      return "w-full h-48 bg-yellow-200 p-5 flex items-center justify-between";
-    } else if (t === "t2") {
-      return "w-full h-48 bg-cyan-100 p-5 flex items-center justify-between";
-    } else if (t === "t3") {
-      return "w-full h-48 bg-rose-200 p-5 flex items-center justify-between";
-    } else if (t === "t4") {
-      return "w-full h-48 bg-emerald-200 p-5 flex items-center justify-between";
-    }
-  };
+  const getURL = (id) => {
+    // return "192.168.0.107:3000";
+    return "https://220.117.120.96:3000";
+  }
 
-  const getTemplate = (t) => {
-    if (t === "t1") {
-      return "w-full h-48 bg-yellow-200 p-5 flex items-center justify-between";
-    } else if (t === "t2") {
-      return "w-full h-48 bg-cyan-100 p-5 flex items-center justify-between";
-    } else if (t === "t3") {
-      return "w-full h-48 bg-rose-200 p-5 flex items-center justify-between";
-    } else if (t === "t4") {
-      return "w-full h-48 bg-emerald-200 p-5 flex items-center justify-between";
+  const updateUsersList = () => {
+    for (let i = 0; i < users.length; i++) {
+      if (!users[i].purchased) {
+        dispatch(deleteUser({ id : users[i].id }));
+      }
     }
-  };
+  }
 
   const renderCard = () =>
     users.map((user) => (
       <div id={user.id} className="relative">
         <div className="flex m-auto items-center" key={user.id}>
-          <div className="flex absolute z-10 p-5">
+          <div class="flex absolute z-20 scale-75 right-10" id="hide">
+            <QRCodeSVG value={getURL(user.id)} />
+          </div>
+          <div className="flex absolute z-30 p-5">
             <div>
               <img
                 className="h-24 w-auto rounded-md"
@@ -73,11 +66,12 @@ const UserList = () => {
                 className="font-normal text-gray-600"
                 data-html2canvas-ignore="true"
               >
-                {user.time}
+                {user.time + "에 생성됨"}
               </h3>
             </div>
-            <div className="z-10 gap-2 flex m-auto" data-html2canvas-ignore="true">
-              <Link to={`edit-user/${user.id}`}>
+            
+            <div className="z-30 gap-2 flex m-auto" data-html2canvas-ignore="true">
+              <Link to={`/edit-user/${user.id}`}>
                 <button>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -125,22 +119,30 @@ const UserList = () => {
           </div>
 
           <img
-            className=" w-full h-full m-device justify-between rounded-md"
+            className=" w-full h-full m-device z-20 justify-between rounded-md"
+            alt="명함 템플릿"
+            src={user.template}
+          ></img>
+
+          <img
+            className="absolute z-10 rounded-md"
+            data-html2canvas-ignore="true"
             alt="명함 템플릿"
             src={user.template}
           ></img>
         </div>
       </div>
     ));
+  
 
   return (
     <div className="h-screen">
+      {updateUsersList()}
       <div className="text-center">
         <Link to="/add-user">
           <Button>명함 만들기</Button>
         </Link>
       </div>
-
       <div className="m-auto w-1/2 grid gap-5 md:grid-cols-2">
         {users.length ? (
           renderCard()

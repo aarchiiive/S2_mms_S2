@@ -14,14 +14,14 @@ const EditUser = () => {
   const { name, phone, addr, SNS, position, email, time, memo } =
     existingUser[0];
   const [values, setValues] = useState({
-    name,
-    phone,
-    addr,
-    SNS,
-    position,
-    email,
-    time,
-    memo,
+    name : "",
+    phone : "",
+    addr : "",
+    SNS : "",
+    position : "",
+    email : "",
+    time : "",
+    memo : "",
   });
 
   const handleEditUser = () => {
@@ -47,7 +47,7 @@ const EditUser = () => {
         memo: values.memo,
       })
     );
-    navigate("/");
+    navigate("/userlist");
   };
 
   return (
@@ -93,6 +93,7 @@ const EditUser = () => {
       <TextField
         label="메모"
         value={values.memo}
+        default
         onChange={(e) => setValues({ ...values, memo: e.target.value })}
         inputProps={{
           type: "text",
@@ -102,7 +103,7 @@ const EditUser = () => {
       <br />
 
         <div className = "justify-between flex">
-      <Button onClick={() => navigate("/")}>이전</Button>
+      <Button onClick={() => navigate("/userlist")}>이전</Button>
       <Button onClick={handleEditUser}>수정</Button>
       </div>
     </div>

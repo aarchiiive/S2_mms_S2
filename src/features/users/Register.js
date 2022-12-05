@@ -8,6 +8,11 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const verifyEmail = () => {
+    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    return (email != '' && email != 'undefined' && regex.test(email));
+  }
+
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
   };
@@ -25,13 +30,26 @@ function Register() {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    const infoList = [name, email, password, confirmPassword];
+    for (let i = 0; i < infoList.length; i++) {
+      if (infoList[i].length === 0) { 
+        console.log("입력 되지 않음");
+        alert("입력되지 않은 정보가 있습니다.");
+        return;
+      };
+    };
+
+    if (!verifyEmail()) {
+      alert("유효하지 않은 이메일입니다.");
+      return;
+    };
 
     if (password !== confirmPassword) {
-      return alert("비밀번호와 비밀번호확인은 같아야 합니다.");
+      return alert("비밀번호가 일치하지 않습니다.");
     } else {
       alert("회원가입이 완료되었습니다.");
       navigate("/login");
-    }
+    };
   };
 
   return (
@@ -77,7 +95,7 @@ function Register() {
           <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={() => navigate("/")}>
             이전
           </button>
-          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={() => navigate("/")}>
+          <button className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300" type="submit" onClick={onSubmit}>
             완료
           </button>
         </div>

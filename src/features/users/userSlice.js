@@ -57,9 +57,17 @@ const userSlice = createSlice({
       if (existingUser) {
         existingUser.payment = payment;
       }
+    },
+    addPurchased: (state, action) => {
+      const { id, purchased } = action.payload;
+      const existingUser = state.find(user => user.id === id);
+      console.log(existingUser);
+      if (existingUser) {
+        existingUser.purchased = purchased;
+      }
     }
   }
 });
 
-export const { addUser, editUser, deleteUser, addTemplate, addPayment } = userSlice.actions;
+export const { addUser, editUser, deleteUser, addTemplate, addPayment, addPurchased } = userSlice.actions;
 export default userSlice.reducer;

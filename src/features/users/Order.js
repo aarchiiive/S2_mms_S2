@@ -14,35 +14,28 @@ const Order = () => {
   // const { name, phone, addr, SNS, position, email, time, memo } = existingUser[0];
   const date = new Date();
   const getDate = () => {
-    return (
-      date.getFullYear() +
-      "년 " +
-      (date.getMonth() + 1) +
-      "월" +
-      date.getDate() +
-      "일 " +
-      ("0" + date.getHours()).slice(-2) +
-      "시 " +
-      ("0" + date.getMinutes()).slice(-2) +
-      "분"
-    )
+    console.log(existingUser[0].time);
+    if (existingUser[0].time.length > 0) { 
+      return existingUser[0].time;
+    }
+
+
+    // return (
+    //   date.getFullYear() +
+    //   "년 " +
+    //   (date.getMonth() + 1) +
+    //   "월" +
+    //   date.getDate() +
+    //   "일 " +
+    //   ("0" + date.getHours()).slice(-2) +
+    //   "시 " +
+    //   ("0" + date.getMinutes()).slice(-2) +
+    //   "분"
+    // )
   }
-
-  // const users = useSelector((store) => store.users);
-  // const handleRemoveUser = (id) => {
-    
-  // };
-
-  // const existingUser = users.filter((user) => user.id === params.id);
-  // const { name, phone, addr, SNS, position, email, time, memo } =
-  //   existingUser[0];
-
 
   const cardName = "명함";
   const id = "MMS" ;
-
-  // id = "MMS" + id.padStart(8, '0');
-  // const date = "20221104";
   const amount = 1000;
   const [ payment, setPayment ] = useState("CreditCard");
 
@@ -61,12 +54,10 @@ const Order = () => {
     }
   };
 
-  const getSpace = (k) => {
-    let space = []
-    for (let i = 0; i < k; k++) {
-      space.push(" ");
-    }
-    return space;
+  const onPaymentHandler = (e) => {
+    e.preventDefault();
+    console.log("payment changed :", e.target.value);
+    setPayment(e.target.value)
   }
 
   return (
@@ -79,17 +70,14 @@ const Order = () => {
             <label>결제수단 &nbsp;&nbsp;&nbsp;</label>
             <select name="payment" 
             defaultValue="CreditCard" 
-            onChange={e =>{
-              e.preventDefault();
-              console.log("payment changed :", e.target.value);
-              setPayment(e.target.value)
-            }}>
+            className="relative h-6 w-40 text-center"
+            onChange={onPaymentHandler}>
               <option value="CreditCard">신용/체크카드</option>
               <option value="CashTransfer">계좌이체</option>
             </select>
           </p>
           <hr></hr>
-          <div>총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}</div>
+          <div className="font-semibold text-center text-lg">총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}</div>
         
       </div>
       <div className = "mt-10 w-1/3 m-auto justify-between flex">
