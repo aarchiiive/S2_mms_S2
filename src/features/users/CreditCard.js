@@ -74,75 +74,75 @@ const CreditCard = () => {
 
   return (
     <div class="h-screen">
-      <div>
-        <div class="my-8 grid grid-rows-1 gap-5 justify-center">
-          <p>
-            <label for="">카드사 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <select
-              className="relative h-6 w-44 text-center"
-              name="payment"
-            >
-              {getPayment()}
-            </select>
-          </p>
-
-          <div className="justify-between flex">
-            카드번호
-            <input
-              className="ml-5 text-center"
-              onChange={(e) => {
-                // e.preventDefault();
-                console.log(e.target.value);
-                if (e.target.value === examplePaymentInfo.number) {
-                  setPaymentInfo({ ...paymentInfo, number: e.target.value });
-                  console.log("Card number verified!");
-                }
-              }}
-            ></input>
+      <div class="box-border backdrop-contrast-125 h-[560px] w-[1000px] m-auto p-4 border-2 rounded-md">
+        <div className="py-8">
+          <div class="my-8 grid grid-rows-1 gap-5 justify-center">
+            <p>
+              <label for="">카드사 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+              <select
+                className="relative h-6 w-44 text-center border-[1px] rounded-md border-gray-400"
+                name="payment"
+              >
+                {getPayment()}
+              </select>
+            </p>
+            <div className="justify-between flex">
+              카드번호
+              <input
+                className="ml-5 text-center border-[1px] rounded-md border-gray-400"
+                onChange={(e) => {
+                  // e.preventDefault();
+                  console.log(e.target.value);
+                  if (e.target.value === examplePaymentInfo.number) {
+                    setPaymentInfo({ ...paymentInfo, number: e.target.value });
+                    console.log("Card number verified!");
+                  }
+                }}
+              ></input>
+            </div>
+            <div className ="justify-between flex">
+              유효기간
+              <input
+                className="ml-5 text-center border-[1px] rounded-md border-gray-400"
+                onChange={(e) => {
+                  // e.preventDefault();
+                  console.log(e.target.value);
+                  if (e.target.value === examplePaymentInfo.expireDate) {
+                    setPaymentInfo({...paymentInfo, expireDate: e.target.value});
+                    console.log("Expire date verified!");
+                  }
+                }}
+              ></input>
+            </div>
+            <div className="justify-between flex">
+              CVC
+              <input className="ml-5 text-center border-[1px] rounded-md border-gray-400"
+                onChange={(e) => {
+                  // e.preventDefault();
+                  console.log(e.target.value);
+                  if (e.target.value === examplePaymentInfo.cvc) {
+                    setPaymentInfo({ ...paymentInfo, cvc: e.target.value });
+                    console.log("CVC verified!");
+                  }
+                }}
+              ></input>
+            </div>
+            <hr></hr>
+            <p className="font-semibold text-center text-lg">
+              총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}
+            </p>
           </div>
-
-          <div className ="justify-between flex">
-            유효기간
-            <input
-              className="ml-5 text-center"
-              onChange={(e) => {
-                // e.preventDefault();
-                console.log(e.target.value);
-                if (e.target.value === examplePaymentInfo.expireDate) {
-                  setPaymentInfo({...paymentInfo, expireDate: e.target.value});
-                  console.log("Expire date verified!");
-                }
-              }}
-            ></input>
-          </div>
-          <div className="justify-between flex">
-            CVC
-            <input className="ml-5 text-center"
-              onChange={(e) => {
-                // e.preventDefault();
-                console.log(e.target.value);
-                if (e.target.value === examplePaymentInfo.cvc) {
-                  setPaymentInfo({ ...paymentInfo, cvc: e.target.value });
-                  console.log("CVC verified!");
-                }
-              }}
-            ></input>
-          </div>
-          <hr></hr>
-          <p className="font-semibold text-center text-lg">
-            총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}
-          </p>
         </div>
-      </div>
-      <div className="mt-10 w-1/3 m-auto justify-between flex">
-        <Button onClick={() => navigate("/order/" + params.id)}>이전</Button>
-        <button
-          class="py-2 px-6 my-10 font-bold rounded-lg shadow-md bg-blue-200 hover:bg-blue-300"
-          onClick={handleCheckOut}
-        >
-          결제하기
-        </button>
-        {/* <Button onClick={handleAddUser}>다음</Button> */}
+        <div className="mt-2 w-1/3 m-auto justify-between flex">
+          <Button onClick={() => navigate("/order/" + params.id)}>이전</Button>
+          <button
+            class="py-2 px-4 my-10 font-bold rounded-lg shadow-md bg-blue-200 hover:bg-blue-300"
+            onClick={handleCheckOut}
+          >
+            결제하기
+          </button>
+          {/* <Button onClick={handleAddUser}>다음</Button> */}
+        </div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import { deleteUser } from "./userSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
+import paper from "../../templates/paper.jpg";
 
 const Confirm = () => {
   const params = useParams();
@@ -35,53 +36,56 @@ const Confirm = () => {
   console.log(users[users.length - 1]);
   return (
     <div className="m-auto mt-10 h-screen">
-      <h3 className="text-center text-gray-600 text-2xl mb-10">
-        명함 최종 확인 단계입니다
-      </h3>
-      <h3 className="text-center  text-gray-600 text-2xl mb-10">
-        명함을 생성하려면 결제를 진행해주세요
-      </h3>
-
-      <div className="m-auto w-96 ">
-        <div id="imageWrapper" className="relative">
-          <div 
-            className="absolute m-auto h-auto rounded-md flex w-full p-5"
-            key={users[users.length - 1].id}
-          >
-            <div className="z-10 p-5" >
+      <div class="box-border backdrop-contrast-125 h-[560px] w-[1000px] m-auto p-4 border-2 rounded-md">
+        <div className="py-4">
+          <h3 className="text-center text-gray-600 text-2xl mb-10">
+            명함 최종 확인 단계입니다
+          </h3>
+          <h3 className="text-center text-gray-600 text-2xl mb-10">
+            명함을 생성하려면 결제를 진행해주세요
+          </h3>
+          <div className="m-auto w-96 drop-shadow-lg">
+            <div id="imageWrapper" className="relative">
+              <div
+                className="absolute m-auto h-auto rounded-md flex w-full p-5"
+                key={users[users.length - 1].id}
+              >
+                <div className="z-10 p-3">
+                  <img
+                    className="h-[100px] w-auto border-2 border-gray-50 p-1 rounded-md"
+                    alt="업로드 이미지"
+                    src={users[users.length - 1].image}
+                  ></img>
+                  <h3 className="font-bold pt-2 text-lg text-gray-700">
+                    {users[users.length - 1].name}
+                  </h3>
+                  <p className="font-normal text-gray-600">
+                    {users[users.length - 1].memo}
+                  </p>
+                </div>
+              </div>
               <img
-                className="h-24 w-auto rounded-md"
-                alt="업로드 이미지"
-                src={users[users.length - 1].image}
+                className="w-96 h-[220px] justify-center rounded-md"
+                alt="명함 템플릿"
+                src={users[users.length - 1].template}
+                // src={paper}
               ></img>
-              <h3 className="font-bold text-lg text-gray-700">
-                {users[users.length - 1].name}
-              </h3>
-              <p className="font-normal text-gray-600">
-                {users[users.length - 1].memo}
-              </p>
+              <div className="flex gap-4"></div>
             </div>
           </div>
-          <img
-            className="w-96 h-auto justify-center rounded-md"
-            alt="명함 템플릿"
-            src={users[users.length - 1].template}
-          ></img>
-          <div className="flex gap-4"></div>
+          <div className="py-4 w-1/3 m-auto justify-between flex">
+            <Button onClick={() => navigate("/view-templates/" + params.id)}>
+              이전
+            </Button>
+            <Button onClick={() => navigate("/order/" + params.id)}>결제</Button>
+            {/* <button
+              className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300"
+              onClick={onCapture}
+            >
+              클릭
+            </button> */}
+          </div>
         </div>
-      </div>
-
-      <div className="mt-10 w-1/3 m-auto justify-between flex">
-        <Button onClick={() => navigate("/view-templates/" + params.id)}>
-          이전
-        </Button>
-        <Button onClick={() => navigate("/order/" + params.id)}>결제</Button>
-        {/* <button
-          className="bg-yellow-200  py-2 px-6 my-10 shadow-md rounded-md font-bold hover:bg-yellow-300"
-          onClick={onCapture}
-        >
-          클릭
-        </button> */}
       </div>
     </div>
   );
