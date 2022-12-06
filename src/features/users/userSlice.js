@@ -34,6 +34,19 @@ const userSlice = createSlice({
         existingUser.memo = memo;
       }
     },
+    viewCard: (state, action) => {
+      const { id, name, phone, addr, SNS, position,email,memo} = action.payload;
+      const existingUser = state.find(user => user.id === id);
+      if(existingUser) {
+        existingUser.name = name;
+        existingUser.phone = phone;
+        existingUser.addr = addr;
+        existingUser.SNS = SNS;
+        existingUser.position = position;
+        existingUser.email = email;
+        existingUser.memo = memo;
+      }
+    },
     deleteUser: (state, action) => {
       const { id } = action.payload;
       const existingUser = state.find(user => user.id === id);
@@ -69,5 +82,5 @@ const userSlice = createSlice({
   }
 });
 
-export const { addUser, editUser, deleteUser, addTemplate, addPayment, addPurchased } = userSlice.actions;
+export const { addUser, editUser, viewCard, deleteUser, addTemplate, addPayment, addPurchased } = userSlice.actions;
 export default userSlice.reducer;

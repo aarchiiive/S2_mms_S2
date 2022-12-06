@@ -11,6 +11,7 @@ import BussinessCard from "./features/users/BussinessCard";
 import Confirm from "./features/users/Confirm";
 import Login from "./features/users/Login";
 import Register from "./features/users/Register";
+import ViewCard from "./features/users/ViewCard";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/userlist" element={<UserList />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/view-card/:id" element={<ViewCard />} />
         <Route path="/add-user" element={<AddUser />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/edit-user/:id" element={<EditUser />} />

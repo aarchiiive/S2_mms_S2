@@ -50,13 +50,13 @@ const UserList = () => {
     users.map((user) => (
       <div id={user.id} className="relative drop-shadow-lg">
         <div className="flex m-auto items-center" key={user.id}>
-          <div class="flex absolute z-20 scale-75 right-10" id="hide">
+          <div class="flex absolute z-20 scale-[0.5] right-10" id="hide">
             <QRCodeSVG value={getURL(user.id)} />
           </div>
           <div className="flex absolute z-30 p-5">
             <div className="pl-2">
               <img
-                className="h-24 w-auto rounded-md"
+                className="h-[160px] w-auto rounded-md"
                 alt="업로드 이미지"
                 src={user.image}
               ></img>
@@ -91,6 +91,11 @@ const UserList = () => {
                   </svg>
                 </button>
               </Link>
+              <Link to={`/view-card/${user.id}`}>
+                <button>
+                 카드봐
+                </button>
+              </Link>
               <button onClick={() => handleRemoveUser(user.id)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +126,7 @@ const UserList = () => {
           </div>
 
           <img
-            className=" w-full h-full m-device z-20 justify-between rounded-md"
+            className="m-device z-20 justify-between rounded-md"
             alt="명함 템플릿"
             src={user.template}
           ></img>
@@ -136,7 +141,6 @@ const UserList = () => {
       </div>
     ));
   
-
   return (
     <div className="h-screen">
       {updateUsersList()}
