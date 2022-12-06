@@ -54,20 +54,22 @@ const UserList = () => {
             <QRCodeSVG value={getURL(user.id)} />
           </div>
           <div className="flex absolute z-30 p-5">
-            <div>
+            <div className="pl-2">
               <img
                 className="h-24 w-auto rounded-md"
                 alt="업로드 이미지"
                 src={user.image}
               ></img>
-              <h3 className="font-bold text-lg text-gray-700">{user.name}</h3>
-              <p className="font-normal text-gray-600">{user.memo}</p>
-              <h3
-                className="font-normal text-gray-600"
-                data-html2canvas-ignore="true"
-              >
-                {user.time + "에 생성됨"}
-              </h3>
+              <div className="pt-2">
+                <h3 className="font-bold text-lg text-gray-700">{user.name}</h3>
+                <p className="font-normal text-gray-600">{user.memo}</p>
+                <h3
+                  className="font-normal text-gray-600"
+                  data-html2canvas-ignore="true"
+                >
+                  {user.time + "에 생성됨"}
+                </h3>
+              </div>
             </div>
             
             <div className="z-30 gap-2 flex m-auto" data-html2canvas-ignore="true">
@@ -143,14 +145,16 @@ const UserList = () => {
           <Button>명함 만들기</Button>
         </Link>
       </div>
-      <div className="m-auto w-1/2 grid gap-5 md:grid-cols-2">
-        {users.length ? (
-          renderCard()
-        ) : (
-          <p className="text-center col-span-2 text-gray-700 font-bold m-3 ">
-            만든 명함이 없어요
-          </p>
-        )}
+      <div class="box-border backdrop-contrast-125 h-[640px] w-[1400px] m-auto p-12 border-2 rounded-md">
+        <div className="m-auto grid gap-5 h-[400px] w-[720px] md:grid-cols-2">
+          {users.length ? (
+            renderCard()
+          ) : (
+            <p className="text-center col-span-2 text-gray-700 font-bold m-3 ">
+              만든 명함이 없어요
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ import Register from "./features/users/Register";
 
 function App() {
   return (
-    <div className=" bg-yellow-100 px-5 pt-10 ">
+    <div className=" bg-yellow-100 px-5 pt-10">
       <h1 className="mb-10 text-center font-bold text-4xl text-gray-700">
       {/* <h1 className="text-center text-transparent text-8xl bg-clip-text bg-gradient-to-r from-yellow-600 to-yellow-100"> */}
         명함을 낳아줘

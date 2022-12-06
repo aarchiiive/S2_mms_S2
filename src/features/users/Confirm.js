@@ -45,32 +45,34 @@ const Confirm = () => {
             명함을 생성하려면 결제를 진행해주세요
           </h3>
           <div className="m-auto w-96 drop-shadow-lg">
-            <div id="imageWrapper" className="relative">
-              <div
-                className="absolute m-auto h-auto rounded-md flex w-full p-5"
-                key={users[users.length - 1].id}
-              >
-                <div className="z-10 p-3">
-                  <img
-                    className="h-[100px] w-auto border-2 border-gray-50 p-1 rounded-md"
-                    alt="업로드 이미지"
-                    src={users[users.length - 1].image}
-                  ></img>
-                  <h3 className="font-bold pt-2 text-lg text-gray-700">
-                    {users[users.length - 1].name}
-                  </h3>
-                  <p className="font-normal text-gray-600">
-                    {users[users.length - 1].memo}
-                  </p>
+            <div className="">
+              <div id="imageWrapper" className="relative">
+                <div
+                  className="absolute m-auto h-auto rounded-md flex w-full p-5"
+                  key={users[users.length - 1].id}
+                >
+                  <div className="z-10 p-3">
+                    <img
+                      className="h-[100px] w-auto border-[2px] border-double border-white rounded-md"
+                      alt="업로드 이미지"
+                      src={users[users.length - 1].image}
+                    ></img>
+                    <h3 className="font-bold pt-2 text-lg text-gray-700">
+                      {users[users.length - 1].name}
+                    </h3>
+                    <p className="font-normal text-gray-600">
+                      {users[users.length - 1].memo}
+                    </p>
+                  </div>
                 </div>
+                <img
+                  className="w-96 h-[220px] justify-center rounded-md"
+                  alt="명함 템플릿"
+                  src={users[users.length - 1].template}
+                  // src={paper}
+                ></img>
+                <div className="flex gap-4"></div>
               </div>
-              <img
-                className="w-96 h-[220px] justify-center rounded-md"
-                alt="명함 템플릿"
-                src={users[users.length - 1].template}
-                // src={paper}
-              ></img>
-              <div className="flex gap-4"></div>
             </div>
           </div>
           <div className="py-4 w-1/3 m-auto justify-between flex">
