@@ -34,6 +34,7 @@ function App() {
         <Route path="/checkout-credit-card/:id" element={<CreditCard />} />
         <Route path="/checkout-cash-transfer/:id" element={<CashTransfer />} />
         <Route path="/bussiness-card/:id" element={<BussinessCard />} />
+        <Route path="/view-card/:id" element={<ViewCard />} />
         <Route path="/generate-qr/:id" element={<GenerateQR />} />
       </Routes>
     </div>

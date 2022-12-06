@@ -75,48 +75,48 @@ const CreditCard = () => {
   return (
     <div class="h-screen">
       <div class="box-border backdrop-contrast-125 h-[560px] w-[1000px] m-auto p-4 border-2 rounded-md">
-        <div className="py-8">
+        <div className="pt-12">
           <div class="my-8 grid grid-rows-1 gap-5 justify-center">
-            <p>
+            <div>
               <label for="">카드사 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
               <select
-                className="relative h-6 w-44 text-center border-[1px] rounded-md border-gray-400"
+                className="relative h-6 w-44 text-center border-[1px] rounded-md border-gray-400 focus:ring-1"
                 name="payment"
               >
                 {getPayment()}
               </select>
-            </p>
-            <div className="justify-between flex">
-              카드번호
-              <input
-                className="ml-5 text-center border-[1px] rounded-md border-gray-400"
-                onChange={(e) => {
-                  // e.preventDefault();
-                  console.log(e.target.value);
-                  if (e.target.value === examplePaymentInfo.number) {
-                    setPaymentInfo({ ...paymentInfo, number: e.target.value });
-                    console.log("Card number verified!");
-                  }
-                }}
-              ></input>
             </div>
-            <div className ="justify-between flex">
-              유효기간
-              <input
-                className="ml-5 text-center border-[1px] rounded-md border-gray-400"
-                onChange={(e) => {
-                  // e.preventDefault();
-                  console.log(e.target.value);
-                  if (e.target.value === examplePaymentInfo.expireDate) {
-                    setPaymentInfo({...paymentInfo, expireDate: e.target.value});
-                    console.log("Expire date verified!");
-                  }
-                }}
-              ></input>
+              <div className="justify-between flex">
+                카드번호
+                <input
+                  className="ml-5 text-center border-[1px] rounded-md border-gray-400 focus:ring-1"
+                  onChange={(e) => {
+                    // e.preventDefault();
+                    console.log(e.target.value);
+                    if (e.target.value === examplePaymentInfo.number) {
+                      setPaymentInfo({ ...paymentInfo, number: e.target.value });
+                      console.log("Card number verified!");
+                    }
+                  }}
+                ></input>
+              </div>
+              <div className ="justify-between flex">
+                유효기간
+                <input
+                  className="ml-5 text-center border-[1px] rounded-md border-gray-400 focus:ring-1"
+                  onChange={(e) => {
+                    // e.preventDefault();
+                    console.log(e.target.value);
+                    if (e.target.value === examplePaymentInfo.expireDate) {
+                      setPaymentInfo({...paymentInfo, expireDate: e.target.value});
+                      console.log("Expire date verified!");
+                    }
+                  }}
+                ></input>
             </div>
             <div className="justify-between flex">
               CVC
-              <input className="ml-5 text-center border-[1px] rounded-md border-gray-400"
+              <input className="ml-5 text-center border-[1px] rounded-md border-gray-400 focus:ring-1"
                 onChange={(e) => {
                   // e.preventDefault();
                   console.log(e.target.value);
@@ -133,7 +133,7 @@ const CreditCard = () => {
             </p>
           </div>
         </div>
-        <div className="mt-2 w-1/3 m-auto justify-between flex">
+        <div className="w-1/3 mx-auto justify-between flex">
           <Button onClick={() => navigate("/order/" + params.id)}>이전</Button>
           <button
             class="py-2 px-4 my-10 font-bold rounded-lg shadow-lg shadow-blue-400/40 bg-blue-200 hover:bg-blue-300"

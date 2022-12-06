@@ -63,7 +63,7 @@ const Order = () => {
   return (
     <div className="h-screen">
       <div class="box-border backdrop-contrast-125 h-[560px] w-[1000px] m-auto p-4 border-2 rounded-md">
-        <div className="py-12">
+        <div className="py-8 mt-4">
           <div class="my-8 grid grid-rows-1 gap-5 justify-center">
             <div>상품명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{cardName}</div>
             <div>주문번호 &nbsp;&nbsp; {id + String(users.length).padStart(4, '0')}</div>

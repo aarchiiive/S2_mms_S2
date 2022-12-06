@@ -1,39 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Button from "../../components/Button";
-import { deleteUser } from "./userSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import html2canvas from "html2canvas";
-import paper from "../../templates/paper.jpg";
+import { QRCodeSVG } from 'qrcode.react';
 
 const Confirm = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const users = useSelector((store) => store.users);
-  const handleRemoveUser = (id) => {
-    dispatch(deleteUser({ id }));
-  };
 
-  const onCapture = () => {
-    const can = document.getElementById("imageWrapper");
-    html2canvas(can).then((canvas) => {
-      onSaveAs(canvas.toDataURL("image/png"), "명함.png");
-    });
-  };
-
-  const onSaveAs = (uri, filename) => {
-    console.log("onSaveAs");
-    var link = document.createElement("a");
-    document.body.appendChild(link);
-    link.href = uri;
-    link.download = filename;
-    // link.download = false;
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  console.log(users[users.length - 1]);
   return (
     <div className="m-auto mt-10 h-screen">
       <div class="box-border backdrop-contrast-125 h-[560px] w-[1000px] m-auto p-4 border-2 rounded-md">
@@ -51,19 +25,23 @@ const Confirm = () => {
                   className="absolute m-auto h-auto rounded-md flex w-full p-5"
                   key={users[users.length - 1].id}
                 >
-                  <div className="z-10 p-3">
+                  <div className="z-10 pl-6 mt-3">
                     <img
-                      className="h-[100px] w-auto border-[2px] border-double border-white rounded-md"
+                      // className="h-[100px] w-auto border-[2px] border-double border-white rounded-md"
+                      className="h-[100px] w-auto rounded-md"
                       alt="업로드 이미지"
                       src={users[users.length - 1].image}
                     ></img>
-                    <h3 className="font-bold pt-2 text-lg text-gray-700">
+                    <h3 className={"font-bold pt-2 text-lg " + users[users.length - 1].mainColor}>
                       {users[users.length - 1].name}
                     </h3>
-                    <p className="font-normal text-gray-600">
+                    <p className={"font-normal " + users[users.length - 1].subColor}>
                       {users[users.length - 1].memo}
                     </p>
                   </div>
+                </div>
+                <div class="flex absolute scale-75 blur py-12 right-10" id="hide">
+                  <QRCodeSVG value={"google.com"} />
                 </div>
                 <img
                   className="w-96 h-[220px] justify-center rounded-md"

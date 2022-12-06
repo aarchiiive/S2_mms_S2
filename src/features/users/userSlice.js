@@ -78,9 +78,21 @@ const userSlice = createSlice({
       if (existingUser) {
         existingUser.purchased = purchased;
       }
+    },
+    addFontColor: (state, action) => {
+      const { id, mainColor, subColor, strokeColor, fillColor, hoverColor } = action.payload;
+      const existingUser = state.find(user => user.id === id);
+      console.log(existingUser);
+      if (existingUser) {
+        existingUser.mainColor = mainColor;
+        existingUser.subColor = subColor;
+        existingUser.strokeColor = strokeColor;
+        existingUser.fillColor = fillColor;
+        existingUser.hoverColor = hoverColor;
+      }
     }
   }
 });
 
-export const { addUser, editUser, viewCard, deleteUser, addTemplate, addPayment, addPurchased } = userSlice.actions;
+export const { addUser, editUser, viewCard, deleteUser, addTemplate, addPayment, addPurchased, addFontColor } = userSlice.actions;
 export default userSlice.reducer;

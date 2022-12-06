@@ -42,7 +42,7 @@ const CashTransfer = () => {
   const handleCheckOut = (e) => {
     e.preventDefault();
     if (paymentInfo.customerName.length === 0) {
-      alert("입금자 성함이 입력되지 않았습니다");
+      alert("입금주 성함이 입력되지 않았습니다");
       return;
     }
 
@@ -59,7 +59,7 @@ const CashTransfer = () => {
   return (
     <div className="h-screen">
       <div class="box-border backdrop-contrast-125 h-[560px] w-[1000px] m-auto p-4 border-2 rounded-md">
-        <div className="py-16">
+        <div className="py-12">
           <div class="my-8 grid grid-rows-1 gap-5 justify-center">
             <div>
               <label for="">은행명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -71,8 +71,31 @@ const CashTransfer = () => {
               </select>
             </div>
             <div className ="justify-between flex">
-              입금자 성함 &nbsp;
+              입금주 성함 &nbsp;
               <input
+                className="w-48 text-center border-[1px] rounded-md border-gray-400"
+                onChange={(e) => {
+                  e.preventDefault();
+                  console.log(e.target.value);
+                  setPaymentInfo({...paymentInfo, customerName : e.target.value});
+                }}
+              ></input>
+            </div>
+            <div className ="justify-between flex">
+              계좌번호 &nbsp;
+              <input
+                className="w-48 text-center border-[1px] rounded-md border-gray-400"
+                onChange={(e) => {
+                  e.preventDefault();
+                  console.log(e.target.value);
+                  setPaymentInfo({...paymentInfo, customerName : e.target.value});
+                }}
+              ></input>
+            </div>
+            <div className ="justify-between flex">
+              비밀번호 &nbsp;
+              <input
+                type="password"
                 className="w-48 text-center border-[1px] rounded-md border-gray-400"
                 onChange={(e) => {
                   e.preventDefault();
@@ -84,15 +107,11 @@ const CashTransfer = () => {
             <hr></hr>
             <div className="font-semibold text-center text-lg">총 결제 금액 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {amount}</div>
           </div>
-          <div className="mt-24 w-1/3 m-auto justify-between flex">
+          <div className="mt-2 w-1/3 m-auto justify-between flex">
             <Button onClick={() => navigate("/order/" + params.id)}>이전</Button>
             {/* bg-yellow-200 font-bold py-2 px-6 my-10 shadow-md rounded-md hover:bg-yellow-300 */}
             <button
-<<<<<<< HEAD
               class="py-2 px-4 my-10 font-bold rounded-lg shadow-lg shadow-blue-400/40 bg-blue-200 hover:bg-blue-300"
-=======
-              class="py-2 px-4 my-10 font-bold rounded-lg shadow-md bg-blue-200 hover:bg-blue-300"
->>>>>>> 81f8e5d76121f1f309ef64e34199e4f696feaf50
               onClick={handleCheckOut}
             >
               결제하기

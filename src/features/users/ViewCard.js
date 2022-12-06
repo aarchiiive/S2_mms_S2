@@ -14,7 +14,7 @@ const ViewCard = () => {
   const existingUser = users.filter((user) => user.id === params.id);
 
   console.log(existingUser[0]);
-  const { name, phone, addr, SNS, position, email, time, memo } =
+  const { name, phone, addr, SNS, position, email, time, memo, image } =
     existingUser[0];
   const [values, setValues] = useState({
     name: "",
@@ -56,10 +56,18 @@ const ViewCard = () => {
 
   return (
     <div className="h-screen">
+    {/* <div className="h-[1200px]"> */}
       <div className="mt-10 w-1/3 m-auto">
         <div className="flex flex-col">
-          <h1 className="mb-2 text-base font-bold text-gray-800">이름</h1>
 
+          <div className="w-1/2 h-auto p-8 m-auto">
+            <img
+            src={image}
+            className="rounded-lg"
+            ></img>
+          </div>
+
+          {/* <h1 className="mb-2 text-base font-bold text-gray-800">이름</h1>
           <h1 className="text-centerpy-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{name}</h1>
           <h1 className="mb-2 text-base font-bold text-gray-800">전화번호</h1>
           <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{phone}</h1>
@@ -72,14 +80,35 @@ const ViewCard = () => {
           <h1 className="mb-2 text-base font-bold text-gray-800">이메일</h1>
           <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{email}</h1>
           <h1 className="mb-2 text-base font-bold text-gray-800">메모</h1>
-          <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{memo}</h1>
+          <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{memo}</h1> */}
+
+          <div className="w-1/2 m-auto">
+            <h1 className="mb-2 text-base font-bold text-gray-800">이름</h1>
+            <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{name}</h1>
+            <h1 className="mb-2 text-base font-bold text-gray-800">전화번호</h1>
+            <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{phone}</h1>
+            <h1 className="mb-2 text-base font-bold text-gray-800">주소</h1>
+            <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{addr}</h1>
+            <h1 className="mb-2 text-base font-bold text-gray-800">SNS</h1>
+            <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{SNS}</h1>
+            <h1 className="mb-2 text-base font-bold text-gray-800">직무/직책</h1>
+            <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{position}</h1>
+            <h1 className="mb-2 text-base font-bold text-gray-800">이메일</h1>
+            <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{email}</h1>
+            <h1 className="mb-2 text-base font-bold text-gray-800">메모</h1>
+            <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{memo}</h1>
+
+            <div className="pt-6">
+              <div className="justify-between flex">
+                <Button onClick={() => navigate("/userlist")}>이전</Button>
+                <Button onClick={handleEditUser}>수정</Button>
+              </div>
+            </div>
+          </div>
         </div>
         <br />
 
-        <div className="justify-between flex">
-          <Button onClick={() => navigate("/userlist")}>이전</Button>
-          <Button onClick={handleEditUser}>수정</Button>
-        </div>
+        
       </div>
     </div>
   );
