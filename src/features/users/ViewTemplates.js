@@ -46,7 +46,7 @@ const ViewTemplates = () => {
     return (
       images.map((img, i) => {
         return (
-          <div class="bg-white-500 opacity-100 scale-75 hover:opacity-70">
+          <div class="bg-white-500 opacity-100 scale-75 hover:opacity-70 rounded-md">
             <img 
             // class="group-hover:opacity-75"
             src={img} 

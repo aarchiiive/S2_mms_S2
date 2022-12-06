@@ -48,7 +48,7 @@ const UserList = () => {
 
   const renderCard = () =>
     users.map((user) => (
-      <div id={user.id} className="relative">
+      <div id={user.id} className="relative drop-shadow-lg">
         <div className="flex m-auto items-center" key={user.id}>
           <div class="flex absolute z-20 scale-75 right-10" id="hide">
             <QRCodeSVG value={getURL(user.id)} />
@@ -145,8 +145,8 @@ const UserList = () => {
           <Button>명함 만들기</Button>
         </Link>
       </div>
-      <div class="box-border backdrop-contrast-125 h-[640px] w-[1400px] m-auto p-12 border-2 rounded-md">
-        <div className="m-auto grid gap-5 h-[400px] w-[720px] md:grid-cols-2">
+      <div class="box-border backdrop-contrast-125 h-[640px] w-[900px] m-auto p-12 border-2 rounded-md">
+         <div className="m-auto grid gap-10 md:grid-cols-2">
           {users.length ? (
             renderCard()
           ) : (
