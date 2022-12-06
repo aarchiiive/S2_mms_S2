@@ -6,7 +6,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { addTemplate } from "./userSlice";
 import t1 from "../../templates/template1.jpg";
 import t2 from "../../templates/template2.jpg";
-import t3 from "../../templates/template3.jpg";
+import t3 from "../../templates/business.jpg";
 // import t4 from "../../templates/template4.jpg";
 import t4 from "../../templates/paper.jpg";
 
@@ -27,8 +27,8 @@ const ViewTemplates = () => {
   const colors = [
     "옐로우",
     "블루",
-    "그린",
-    "레드"
+    "비즈니스",
+    "종이질감"
   ]
   const handleViewTemplates = () => {
     if (selected) {
@@ -46,7 +46,7 @@ const ViewTemplates = () => {
     return (
       images.map((img, i) => {
         return (
-          <div class="bg-white-500 opacity-100 scale-75 hover:opacity-70">
+          <div class="bg-white-500 opacity-100 scale-75 hover:opacity-70 rounded-md">
             <img 
             // class="group-hover:opacity-75"
             src={img} 
@@ -55,13 +55,13 @@ const ViewTemplates = () => {
               const k = i + 1;
               const imgName = "t" + k;
               console.log("template", i, "selected");
-              alert(colors[i] + "가(이) 선택되었습니다.");
+              alert(colors[i] + " 템플릿이 선택되었습니다.");
               setSelected(true);
               console.log(imgName);
               setTemplate(img);
               setTemplateName(imgName);
             }}
-            className="flex w-[360px] h-[200px] object-center"
+            className="flex scale-100 w-[360px] h-[200px] object-center"
             alt="card template"/>
           </div>
         )

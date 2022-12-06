@@ -34,8 +34,7 @@ const UserList = () => {
   };
 
   const getURL = (id) => {
-    // return "192.168.0.107:3000";
-    return "https://220.117.120.96:3000";
+    return "localhost:3000/view-card/" + id;
   }
 
   const updateUsersList = () => {
@@ -48,26 +47,28 @@ const UserList = () => {
 
   const renderCard = () =>
     users.map((user) => (
-      <div id={user.id} className="relative">
+      <div id={user.id} className="relative drop-shadow-lg">
         <div className="flex m-auto items-center" key={user.id}>
-          <div class="flex absolute z-20 scale-[0.5] right-10" id="hide">
+          <div class="flex absolute z-20 scale-75 right-10" id="hide">
             <QRCodeSVG value={getURL(user.id)} />
           </div>
           <div className="flex absolute z-30 p-5">
-            <div>
+            <div className="pl-2">
               <img
-                className="h-[160px] w-auto rounded-md"
+                className="h-24 w-auto rounded-md"
                 alt="업로드 이미지"
                 src={user.image}
               ></img>
-              <h3 className="font-bold text-lg text-gray-700">{user.name}</h3>
-              <p className="font-normal text-gray-600">{user.memo}</p>
-              <h3
-                className="font-normal text-gray-600"
-                data-html2canvas-ignore="true"
-              >
-                {user.time + "에 생성됨"}
-              </h3>
+              <div className="pt-2">
+                <h3 className="font-bold text-lg text-gray-700">{user.name}</h3>
+                <p className="font-normal text-gray-600">{user.memo}</p>
+                <h3
+                  className="font-normal text-gray-600"
+                  data-html2canvas-ignore="true"
+                >
+                  {user.time + "에 생성됨"}
+                </h3>
+              </div>
             </div>
             
             <div className="z-30 gap-2 flex m-auto" data-html2canvas-ignore="true">
@@ -87,11 +88,6 @@ const UserList = () => {
                       d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                     />
                   </svg>
-                </button>
-              </Link>
-              <Link to={`/view-card/${user.id}`}>
-                <button>
-                 카드봐
                 </button>
               </Link>
               <button onClick={() => handleRemoveUser(user.id)}>
@@ -118,13 +114,12 @@ const UserList = () => {
                 className="h-6 w-6"
                 viewBox="0 0 20 20">
                   <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-                
               </button>
             </div>
           </div>
 
           <img
-            className="m-device z-20 justify-between rounded-md"
+            className=" w-full h-full m-device z-20 justify-between rounded-md"
             alt="명함 템플릿"
             src={user.template}
           ></img>
@@ -139,6 +134,7 @@ const UserList = () => {
       </div>
     ));
   
+
   return (
     <div className="h-screen">
       {updateUsersList()}
@@ -147,14 +143,16 @@ const UserList = () => {
           <Button>명함 만들기</Button>
         </Link>
       </div>
-      <div className="m-auto w-1/2 grid gap-5 md:grid-cols-2">
-        {users.length ? (
-          renderCard()
-        ) : (
-          <p className="text-center col-span-2 text-gray-700 font-bold m-3 ">
-            만든 명함이 없어요
-          </p>
-        )}
+      <div class="box-border backdrop-contrast-125 h-[640px] w-[900px] m-auto p-12 border-2 rounded-md">
+         <div className="m-auto grid gap-10 md:grid-cols-2">
+          {users.length ? (
+            renderCard()
+          ) : (
+            <p className="text-center col-span-2 text-gray-700 font-bold m-3 ">
+              만든 명함이 없어요
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
