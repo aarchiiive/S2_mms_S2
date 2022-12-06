@@ -7,7 +7,8 @@ import { addTemplate } from "./userSlice";
 import t1 from "../../templates/template1.jpg";
 import t2 from "../../templates/template2.jpg";
 import t3 from "../../templates/template3.jpg";
-import t4 from "../../templates/template4.jpg";
+// import t4 from "../../templates/template4.jpg";
+import t4 from "../../templates/paper.jpg";
 
 const ViewTemplates = () => {
   const params = useParams();
@@ -60,7 +61,7 @@ const ViewTemplates = () => {
               setTemplate(img);
               setTemplateName(imgName);
             }}
-            class="flex scale-100 w-90 h-50 object-center"
+            className="flex w-[360px] h-[200px] object-center"
             alt="card template"/>
           </div>
         )
@@ -70,12 +71,14 @@ const ViewTemplates = () => {
 
   return (
     <div className="h-screen">
-      <div className="w-3/5 m-auto grid gap-10 md:grid-cols-2">
-        <RenderTemplate></RenderTemplate>
-      </div>
-      <div className = "flex justify-around">
-        <Button onClick={() => navigate("/add-user")}>이전</Button>
-        <Button onClick={handleViewTemplates}>다음</Button>
+      <div class="box-border backdrop-contrast-125 h-[580px] w-[1000px] m-auto p-4 border-2 rounded-md">
+        <div className="w-3/5 m-auto grid gap-10 md:grid-cols-2">
+          <RenderTemplate></RenderTemplate>
+        </div>
+        <div className = "px-60 justify-between flex">
+          <Button onClick={() => navigate("/add-user")}>이전</Button>
+          <Button onClick={handleViewTemplates}>다음</Button>
+        </div>
       </div>
     </div>
   )

@@ -57,38 +57,38 @@ const EditUser = () => {
         label="이름"
         value={values.name}
         onChange={(e) => setValues({ ...values, name: e.target.value })}
-        inputProps={{ type: "text", placeholder: "이름을 입력하세요" }}
+        inputProps={{ type: "text", placeholder: name}}
       />
       <br />
       <TextField
         label="전화번호"
         value={values.phone}
         onChange={(e) => setValues({ ...values, phone: e.target.value })}
-        inputProps={{ type: "text", placeholder: "전화번호를 입력하세요" }}
+        inputProps={{ type: "text", placeholder: phone}}
       />
       <TextField
         label="주소"
         value={values.addr}
         onChange={(e) => setValues({ ...values, addr: e.target.value })}
-        inputProps={{ type: "text", placeholder: "주소를 입력하세요" }}
+        inputProps={{ type: "text", placeholder: addr }}
       />
       <TextField
         label="SNS"
         value={values.SNS}
         onChange={(e) => setValues({ ...values, SNS: e.target.value })}
-        inputProps={{ type: "text", placeholder: "SNS를 입력하세요" }}
+        inputProps={{ type: "text", placeholder: SNS}}
       />
       <TextField
         label="직책/직무"
         value={values.position}
         onChange={(e) => setValues({ ...values, position: e.target.value })}
-        inputProps={{ type: "text", placeholder: "직책/직무를 입력하세요" }}
+        inputProps={{ type: "text", placeholder: position}}
       />
       <TextField
         label="Email"
         value={values.email}
         onChange={(e) => setValues({ ...values, email: e.target.value })}
-        inputProps={{ type: "email", placeholder: "Email을 입력하세요" }}
+        inputProps={{ type: "email", placeholder: email}}
       />
       <TextField
         label="메모"
@@ -97,7 +97,7 @@ const EditUser = () => {
         onChange={(e) => setValues({ ...values, memo: e.target.value })}
         inputProps={{
           type: "text",
-          placeholder: "명함에 대한 메모를 입력하세요",
+          placeholder: memo,
         }}
       />
       <br />
