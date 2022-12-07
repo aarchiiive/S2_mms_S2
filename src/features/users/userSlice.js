@@ -20,7 +20,7 @@ const userSlice = createSlice({
         "일 " +
         ("0" + date.getHours()).slice(-2) +
         ":" +
-        ("0" + date.getMinutes()).slice(-2)+'에 수정됨';
+        ("0" + date.getMinutes()).slice(-2); //+'에 수정됨';
       const { id, name, phone, addr, SNS, position,email,time ,memo} = action.payload;
       const existingUser = state.find(user => user.id === id);
       if(existingUser) {

@@ -48,7 +48,7 @@ function Register() {
       return alert("비밀번호가 일치하지 않습니다.");
     } else {
       alert("회원가입이 완료되었습니다.");
-      navigate("/login");
+      navigate("/");
     };
   };
 

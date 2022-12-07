@@ -147,9 +147,14 @@ const UserList = () => {
     <div className="h-screen">
       {updateUsersList()}
       <div className="text-center">
-        <Link to="/add-user">
-          <Button>명함 만들기</Button>
-        </Link>
+        {/* <Link to="/add-user">
+          <Button className="">명함 만들기</Button>
+        </Link> */}
+        <button className="transition ease-in-out animate-bounce delay-100 hover:scale-110 bg-yellow-200  py-2 px-6 my-10 shadow-lg rounded-md font-bold shadow-yellow-500/50 hover:bg-yellow-300"
+          onClick={() => {navigate("/add-user")}}
+        >
+          명함 만들기
+        </button>
       </div>
       <div class="pt-10">
         <div class="box-border backdrop-contrast-125 h-auto w-[1000px] m-auto p-12 border-2 rounded-md">

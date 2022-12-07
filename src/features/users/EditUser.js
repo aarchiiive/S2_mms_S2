@@ -14,14 +14,14 @@ const EditUser = () => {
   const { name, phone, addr, SNS, position, email, time, memo } =
     existingUser[0];
   const [values, setValues] = useState({
-    name : "",
-    phone : "",
-    addr : "",
-    SNS : "",
-    position : "",
-    email : "",
+    name : name,
+    phone : phone,
+    addr : addr,
+    SNS : SNS,
+    position : position,
+    email : email,
     time : "",
-    memo : "",
+    memo : memo,
   });
 
   const handleEditUser = () => {

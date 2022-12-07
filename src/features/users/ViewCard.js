@@ -55,16 +55,18 @@ const ViewCard = () => {
   };
 
   return (
-    <div className="h-screen">
-    {/* <div className="h-[1200px]"> */}
+    // <div className="h-screen">
+    <div className="h-[1200px]">
       <div className="mt-10 w-1/3 m-auto">
         <div className="flex flex-col">
 
-          <div className="w-1/2 h-auto p-8 m-auto">
-            <img
-            src={image}
-            className="rounded-lg"
-            ></img>
+          <div className="p-4">
+            <div className="shadow-xl w-1/2 h-auto m-auto rounded-lg">
+              <img
+              src={image}
+              className="rounded-lg"
+              ></img>
+            </div>
           </div>
 
           {/* <h1 className="mb-2 text-base font-bold text-gray-800">이름</h1>
@@ -98,12 +100,12 @@ const ViewCard = () => {
             <h1 className="mb-2 text-base font-bold text-gray-800">메모</h1>
             <h1 className="py-2 mb-2 px-3 bg-yellow-200 shadow-md font-bold outline-none rounded-2xl">{memo}</h1>
 
-            <div className="pt-6">
+            {/* <div className="pt-6">
               <div className="justify-between flex">
                 <Button onClick={() => navigate("/userlist")}>이전</Button>
                 <Button onClick={handleEditUser}>수정</Button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <br />
